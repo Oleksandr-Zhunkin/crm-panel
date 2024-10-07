@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Form, Formik } from "formik";
-import Button from "@/app/components/Button";
-import InputField from "@/app/components/InputField";
-import LogoUploader from "@/app/components/LogoUploader";
+import React from 'react';
+import { Form, Formik } from 'formik';
+
+import Button from './Button';
+import LogoUploader from './LogoUploader';
+import InputField from './InputField';
 
 export type CompanyFieldValues = {
   name: string;
@@ -16,12 +17,12 @@ export type CompanyFieldValues = {
 };
 
 const initialValues: CompanyFieldValues = {
-  name: "",
-  status: "",
-  country: "",
-  category: "",
-  date: "",
-  description: "",
+  name: '',
+  status: '',
+  country: '',
+  category: '',
+  date: '',
+  description: '',
 };
 
 export interface CompanyFormProps {

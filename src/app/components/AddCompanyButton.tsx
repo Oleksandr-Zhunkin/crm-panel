@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import Button from "@/app/components/Button";
-import dynamic from "next/dynamic";
+import React from 'react';
 
-const CompanyFormModal = dynamic(() => import("./CompanyFormModal"), {
+import dynamic from 'next/dynamic';
+import Button from './Button';
+
+const CompanyFormModal = dynamic(() => import('./CompanyFormModal'), {
   ssr: false,
 });
 
