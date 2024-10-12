@@ -1,11 +1,10 @@
 import React from 'react';
+import Header from '../../components/Header';
 
-const page = () => {
+export default function Page() {
   return (
     <>
-      <h1>Dashboard page</h1>
+      <Header>Dashboard</Header>
     </>
   );
-};
-
-export default page;
+}
