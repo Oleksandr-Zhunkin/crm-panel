@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import { Field } from "formik";
-import React from "react";
+import { Field } from 'formik';
+import React from 'react';
 
 export interface InputFieldProps {
   label?: string;
   placeholder?: string;
   name: string;
   type?: string;
+  required?: boolean;
 }
 
 const InputField = ({ label, name, placeholder, ...rest }: InputFieldProps) => {
