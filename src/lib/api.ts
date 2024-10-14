@@ -92,6 +92,9 @@ export const getCompanies = (init?: RequestInit) => {
 };
 
 export const getCompany = (id: string, init?: RequestInit) => {
+  if (!id) {
+  throw new Error('Company ID is required');
+}
   return sendRequest<Company>(buildUrl('companies', id), init);
 };
 
