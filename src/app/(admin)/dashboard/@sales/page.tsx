@@ -7,6 +7,7 @@ import React from 'react';
 
 export default async function Page() {
   const data = await getSummarySales();
+
   return (
     <DashboardCard label="Sales details">
       <SummaryTable

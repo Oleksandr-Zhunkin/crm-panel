@@ -1,6 +1,7 @@
 import Header from '@/app/app/components/Header';
 import { Company, getCompany } from '@/app/lib/api';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 export interface PageProps {
@@ -8,6 +9,9 @@ export interface PageProps {
 }
 
 export default async function Page({ params }: PageProps) {
+  if (!params.id) {
+    notFound();
+  }
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery({

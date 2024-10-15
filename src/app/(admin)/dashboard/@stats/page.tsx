@@ -10,11 +10,7 @@ const labelByStat: Record<keyof SummaryStats, string> = {
 };
 
 export default async function Page() {
-  const data = await getSummaryStats({
-    next: {
-      revalidate: 5,
-    },
-  });
+  const data = await getSummaryStats();
 
   return (
     <div className="grid grid-cols-12 gap-5">
