@@ -93,27 +93,31 @@ export const getCompanies = (init?: RequestInit) => {
 
 export const getCompany = (id: string, init?: RequestInit) => {
   if (!id) {
-  throw new Error('Company ID is required');
-}
+    throw new Error('Company ID is required');
+  }
   return sendRequest<Company>(buildUrl('companies', id), init);
 };
 
 export const getPromotions = async (
   params: Record<string, string> = {},
-  init?: RequestInit,
+  init?: RequestInit
 ) => {
   return sendRequest<Promotion[]>(
     `${buildUrl('promotions')}?${stringifyQueryParams(params)}`,
-    init,
+    init
   );
 };
 
-export const createPromotion = async (data: Omit<Promotion, 'id'>, init?: RequestInit) => {
+export const createPromotion = async (
+  data: Omit<Promotion, 'id'>,
+  init?: RequestInit
+) => {
   return sendRequest<Promotion>(buildUrl('promotions'), {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
-      ...(init && init.headers), 'content-type': 'application/json',
+      ...(init && init.headers),
+      'content-type': 'application/json',
     },
-  })
- };
+  });
+};
