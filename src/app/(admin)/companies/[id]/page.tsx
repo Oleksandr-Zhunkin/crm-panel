@@ -6,29 +6,38 @@ import { Company, getCompany, getPromotions } from '@/app/lib/api';
 import CompanyInfo from '@/app/app/components/CompanyInfo';
 import CompanyPromotions from '@/app/app/components/CompanyPromotions';
 
-
 export interface PageProps {
   params: { id: string };
 }
 
 export default async function Page({ params }: PageProps) {
+  if (!params.id) {
+    notFound();
+  }
+
   const queryClient = getQueryClient();
+
   await queryClient.prefetchQuery({
     queryKey: ['companies', params.id],
     queryFn: () => getCompany(params.id, { cache: 'no-store' }),
     staleTime: 10 * 1000,
   });
+
   await queryClient.prefetchQuery({
     queryKey: ['promotions', params.id],
     queryFn: () =>
       getPromotions({ companyId: params.id }, { cache: 'no-store' }),
     staleTime: 10 * 1000,
   });
+
   const company = queryClient.getQueryData(['companies', params.id]) as Company;
+
   if (!company) {
     notFound();
   }
+
   const dehydratedState = dehydrate(queryClient);
+
   return (
     <HydrationBoundary state={dehydratedState}>
       <div className="py-6 px-10 grid grid-cols-12 gap-5">
