@@ -83,12 +83,21 @@ export const getCountries = (init?: RequestInit) => {
   return sendRequest<Country[]>(buildUrl('countries'), init);
 };
 
-export const getCategories = (init?: RequestInit) => {
-  return sendRequest<Category[]>(buildUrl('categories'), init);
+export const getCategories = async (init?: RequestInit) => {
+  const categories = await sendRequest<Category[]>(
+    buildUrl('categories'),
+    init
+  );
+
+  return categories.filter((category) => category.id);
 };
 
-export const getCompanies = (init?: RequestInit) => {
-  return sendRequest<Company[]>(buildUrl('companies'), init);
+export const getCompanies = async (init?: RequestInit) => {
+  const companies = await sendRequest<Company[]>(buildUrl('companies'), init);
+
+  return companies.filter(
+    (company) => company.categoryId && company.categoryTitle
+  );
 };
 
 export const getCompany = (id: string, init?: RequestInit) => {
