@@ -1,6 +1,3 @@
-import mongoose from 'mongoose';
-const { ObjectId } = mongoose.Types;
-
 export interface SummaryStats {
   promotions: number;
   categories: number;
@@ -98,9 +95,7 @@ export const getCompany = (id: string, init?: RequestInit) => {
   if (!id) {
     throw new Error('Company ID is required');
   }
-  if (!ObjectId.isValid(id)) {
-    throw new Error('Invalid ObjectId');
-  }
+
   return sendRequest<Company>(buildUrl('companies', id), init);
 };
 
