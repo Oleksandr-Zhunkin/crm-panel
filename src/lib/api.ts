@@ -96,7 +96,11 @@ export const getCompanies = async (init?: RequestInit) => {
   const companies = await sendRequest<Company[]>(buildUrl('companies'), init);
 
   return companies.filter(
-    (company) => company.categoryId && company.categoryTitle
+    (company) =>
+      company.categoryId &&
+      company.categoryTitle &&
+      company.countryId &&
+      company.countryTitle
   );
 };
 

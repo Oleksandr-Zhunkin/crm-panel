@@ -7,6 +7,7 @@ import DashboardCard from '@/app/app/components/DashboardCard';
 
 export default async function Page() {
   const countries = await getCountries();
+
   const companies = await getCompanies();
   const counts = getCountById(companies, 'countryId');
 
@@ -19,7 +20,7 @@ export default async function Page() {
               key={id}
               className={clsx(
                 'text-sm text-gray-900 font-medium',
-                'before:inline-block before:w-2 before:h-2 before:rounded-full before:align-middle before:mr-2 before:bg-purple-200',
+                'before:inline-block before:w-2 before:h-2 before:rounded-full before:align-middle before:mr-2 before:bg-purple-200'
               )}
             >{`${title} - ${counts[id] || 0}`}</p>
           ))}
